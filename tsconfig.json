@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@pb-test/shared": ["libs/shared/src/index.ts"],
+      "@pb-test/shared/*": ["libs/shared/src/*"]
+    }
+  }
+}

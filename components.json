@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tailwind": {
+    "config": "apps/pb-next/tailwind.config.js",
+    "css": "apps/pb-next/app/output.css",
+    "baseColor": "stone",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "libs/shared/src/components",
+    "utils": "libs/shared/src/utils"
+  }
+}
