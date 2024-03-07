@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { renderBlocks } from '../../helpers';
-import { TPageBlock } from '../../types/page';
+import { TPageBlock } from '../../types';
 import { TComponentMap } from '@pb-test/types';
 
 export type TArticlePage = {

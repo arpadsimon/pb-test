@@ -1,8 +1,8 @@
-import { transformContent } from '../../helpers/';
+import { transformContent } from '../../../helpers/';
 import { notFound } from 'next/navigation';
 import { TEMPLATE_DICTIONARY } from './constants';
-import { getEntries } from '@pb-test/shared';
-import { TPageData } from '../../types';
+import { getPreviewEntries } from '@pb-test/shared';
+import { TPageData } from '../../../types';
 
 type TPageProps = {
   params: {
@@ -13,7 +13,7 @@ type TPageProps = {
 async function getData(slug: string[]): Promise<any> {
   const slugToMatch = slug.join('/');
 
-  return getEntries({
+  return getPreviewEntries({
     content_type: 'articlePage',
     'fields.slug': slugToMatch,
     include: 10,
