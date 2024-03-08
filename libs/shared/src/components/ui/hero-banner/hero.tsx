@@ -51,19 +51,21 @@ export const Hero: FC<IHero> = ({
             >
               {subTitle}
             </p>
-            <div className="space-x-4">
-              {buttons.map((button, index) => {
-                const {
-                  fields: { title: text },
-                } = button;
+            {buttons && (
+              <div className="space-x-4">
+                {buttons.map((button, index) => {
+                  const {
+                    fields: { title: text },
+                  } = button;
 
-                return (
-                  <Button key={index} variant={'secondary'}>
-                    {text}
-                  </Button>
-                );
-              })}
-            </div>
+                  return (
+                    <Button key={index} variant={'secondary'}>
+                      {text}
+                    </Button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 import { transformContent } from '../../../helpers/';
 import { notFound } from 'next/navigation';
-import { TEMPLATE_DICTIONARY } from './constants';
+import { TEMPLATE_DICTIONARY } from '../../constants';
 import { getPreviewEntries } from '@pb-test/shared';
 import { TPageData } from '../../../types';
+import { Metadata } from 'next';
+import { TypeArticlePage } from '@pb-test/types';
 
 type TPageProps = {
   params: {
@@ -10,7 +12,7 @@ type TPageProps = {
   };
 };
 
-async function getData(slug: string[]): Promise<any> {
+async function getData(slug: string[] = ['/']): Promise<any> {
   const slugToMatch = slug.join('/');
 
   return getPreviewEntries({
@@ -18,11 +20,13 @@ async function getData(slug: string[]): Promise<any> {
     'fields.slug': slugToMatch,
     include: 10,
   })
-    .then(({ items }) => transformContent(items[0]))
+    .then(({ items }) => transformContent(items[0] as TypeArticlePage))
     .catch((err: Error) => console.log(err));
 }
 
-export async function generateMetadata({ params }: TPageProps) {
+export async function generateMetadata({
+  params,
+}: TPageProps): Promise<Metadata | undefined> {
   const { slug } = params;
 
   try {
@@ -38,7 +42,7 @@ export async function generateMetadata({ params }: TPageProps) {
       },
     };
   } catch (e) {
-    notFound();
+    console.log(e);
   }
 }
 
@@ -50,5 +54,5 @@ export default async function Page({ params }: TPageProps) {
 
   const [Page, components] = TEMPLATE_DICTIONARY[pageType];
 
-  return <Page content={content} components={components} />;
+  return <Page content={content} components={components} isPreview />;
 }

@@ -1,3 +1,4 @@
 export enum PageType {
-  ArticlePage = 'articlePage',
+  ArticlePage = 'article',
+  IndexPage = 'index',
 }
